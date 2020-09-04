@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
     cb(null, "public");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
@@ -38,7 +38,7 @@ const saveImage = async (image, req) => {
   return fetchedImage;
 };
 
-app.post("/v1/file/", async (req, res) => {
+app.post("/v1/file/", (req, res) => {
   upload(req, res, async (err) => {
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
@@ -49,20 +49,25 @@ app.post("/v1/file/", async (req, res) => {
     let fileData = fs.readFileSync(req.file.path);
 
     const image = new Image({
-      name: req.file.filename,
+      name: req.file.originalname,
       type: req.file.mimetype,
       data: fileData,
     });
 
     await image.save();
+    console.log(`${req.file.originalname} added to database`);
 
-    console.log(`${req.file.filename} added to database`);
-    const fetchedImage = await Image.findOne({ name: req.file.filename });
+    const fetchedImage = await Image.findOne({ name: req.file.originalname });
     console.log(fetchedImage);
-
-    return res.status(200).send(req.file);
+    return res.status(200).send(fetchedImage);
   });
 });
+
+// app.get("/v1/file/", async (req, res) => {
+//   const { name } = req.body;
+//   const fetchedImage = await Image.findOne({ name });
+//   res.status(200).send(fetchedImage);
+// });
 
 app.listen(8080, (err) => {
   if (err) console.log(err);
