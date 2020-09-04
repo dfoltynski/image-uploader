@@ -18,9 +18,6 @@ function App() {
       "http://localhost:8080/v1/file/",
       data
     );
-    console.log(file[0]);
-
-    console.log(fetchedFile.data.data);
 
     setImage(bufferToBase64(fetchedFile.data.data.data));
   };
@@ -37,7 +34,6 @@ function App() {
   return (
     <main>
       <div className="container">
-        {/* <img src="https://images.unsplash.com/photo-1599191598042-904ecc2e418b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"></img> */}
         {image ? (
           <img src={`data:image/jpeg;base64,${image}`} />
         ) : (

@@ -58,16 +58,9 @@ app.post("/v1/file/", (req, res) => {
     console.log(`${req.file.originalname} added to database`);
 
     const fetchedImage = await Image.findOne({ name: req.file.originalname });
-    console.log(fetchedImage);
     return res.status(200).send(fetchedImage);
   });
 });
-
-// app.get("/v1/file/", async (req, res) => {
-//   const { name } = req.body;
-//   const fetchedImage = await Image.findOne({ name });
-//   res.status(200).send(fetchedImage);
-// });
 
 app.listen(8080, (err) => {
   if (err) console.log(err);
