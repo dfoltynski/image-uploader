@@ -1,10 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,600;1,300;1,400&display=swap");
+
 main {
   width: 100vw;
   height: 100vh;
   display: flex;
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
+  display: flex;
   margin: auto;
   width: 40%;
   height: 85%;
@@ -16,22 +20,52 @@ main {
 }
 
 .container__item {
+  display: flex;
   margin: auto;
 }
 
-input[type="file"] {
-  display: none;
+.container__item__file {
+  text-align: center;
+  padding: 1em;
 }
 
 .file {
-  width: 80%;
-  height: 10em;
-  margin: 1em;
+  text-align: center;
+  display: flex;
+  height: 20em;
+  margin: auto;
   border: 1px solid #ccc;
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 6px;
+}
+
+.svg-inline--fa.fa-w-18 {
+  margin: auto;
+  width: 100%;
+}
+
+.submit {
+  margin-top: 1em;
+  background-color: #4503fc;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  width: 5em;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  -webkit-box-shadow: 0px 0px 26px -17px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 26px -17px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 26px -17px rgba(0, 0, 0, 0.75);
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.submit:hover {
+  transition: 0.4s ease-in-out;
+  background-color: #3300c2;
 }
 
 /* input[type="file"] {

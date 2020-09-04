@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.0.3",
     "react-scripts": "0.9.5"
   },
   "devDependencies": {},
